@@ -3,7 +3,7 @@ Allows the Akai MPD226 to communicate with FL Studio via a Python API.
 
 <img src="https://www.stars-music.com/medias/akai/mpd226-hd-89540.png" alt="MPD226" width="450"/>
 
-1) These files belong in `Image-Line/FL Studio/Settings/Hardware/Akai MPD226/`
+1) This project belong in `Image-Line/FL Studio/Settings/Hardware/`
 2) In the FL Studio MIDI settings, select `Akai MPD226 (user)` from the controller type dropdown.
 
 ### MPD226 button event information
