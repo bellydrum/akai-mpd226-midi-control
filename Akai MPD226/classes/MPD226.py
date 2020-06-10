@@ -37,6 +37,8 @@ class MPD226:
     PAD_BUFFER = 0.1
     STOP_BUFFER = 2
 
+    INPUT_MODES = ['default', 'ui', 'transport']
+
     def __init__(self):
         self.events = {
             153: 'Note On',

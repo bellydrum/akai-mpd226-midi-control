@@ -31,6 +31,8 @@ class MPDHandler(MPD226):
     init_time = None
     last_pad_press_time = None
     last_stop_press_time = None
+    button_map = 0
+    mode_change_unlocked = True
 
     """
     Initialization
@@ -63,6 +65,21 @@ class MPDHandler(MPD226):
         else:
             print(f"{button.type.upper()} {button.number} has no associated buffer.")
 
+    def change_button_mapping(self, map=1):
+        """ Update the global button mapping mode id. """
+        if isinstance(map, str):
+            if map in self.INPUT_MODES: map = self.INPUT_MODES.index(map)
+        self.button_map = (self.button_map + map) % len(self.INPUT_MODES)
+
+    def check_for_remap(self, pad):
+        """ Change the button mapping if certain conditions are met. """
+        if self.mode_change_unlocked:
+            if self.pad_13.held and self.pad_16.held:
+                if pad  == self.pad_1:
+                    self.change_button_mapping(-1)
+                elif pad == self.pad_4:
+                    self.change_button_mapping(1)
+
     """
     Input handlers
     """
@@ -73,13 +90,16 @@ class MPDHandler(MPD226):
         """
         print(f"Pressed pad {pad.number}.")
 
+        self.check_for_remap(pad)
+        print(self.button_map)
+
         event.handled = True
 
     def handle_pad_release(self, event, pad):
         """
         Put pad release code here.
         """
-        print(f"Released pad {pad.number}.")
+        # print(f"Released pad {pad.number}.")
 
         event.handled = True
 
@@ -87,7 +107,7 @@ class MPDHandler(MPD226):
         """
         Put pad pressure change code here.
         """
-        print(f"Changed pad {pad.number} pressure to {value}.")
+        # print(f"Changed pad {pad.number} pressure to {value}.")
 
         event.handled = True
 
