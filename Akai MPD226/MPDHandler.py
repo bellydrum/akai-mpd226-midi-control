@@ -57,6 +57,10 @@ class MPDHandler(MPD226):
     Utility methods
     """
 
+    def set_hint_message(self, message):
+        if isinstance(message, str): ui.setHintMsg(message)
+        else: print(f"self.setHintMessage error:\n  Param 'message' must be of type str.")
+
     def check_buffer(self, button, time_pressed):
         if button.type == 'transport' and self.last_stop_press_time:
             return time_pressed - self.last_stop_press_time > self.STOP_BUFFER
@@ -70,15 +74,18 @@ class MPDHandler(MPD226):
         if isinstance(map, str):
             if map in self.INPUT_MODES: map = self.INPUT_MODES.index(map)
         self.button_map = (self.button_map + map) % len(self.INPUT_MODES)
+        self.set_hint_message(f"{self.INPUT_MODES[self.button_map]} mode".upper())
 
-    def check_for_remap(self, pad):
+    def check_for_remap(self, pad, event):
         """ Change the button mapping if certain conditions are met. """
         if self.mode_change_unlocked:
             if self.pad_13.held and self.pad_16.held:
                 if pad  == self.pad_1:
                     self.change_button_mapping(-1)
+                    event.handled = True
                 elif pad == self.pad_4:
                     self.change_button_mapping(1)
+                    event.handled = True
 
     """
     Input handlers
@@ -90,8 +97,15 @@ class MPDHandler(MPD226):
         """
         print(f"Pressed pad {pad.number}.")
 
-        self.check_for_remap(pad)
-        print(self.button_map)
+        if self.button_map == 0:  # DEFAULT MODE
+            """ Default button mapping events go here. """
+
+        elif self.button_map == 1:  # UI MODE
+            """ UI button mapping events go here. """
+
+        elif self.button_map == 2:  # TRANSPORT MODE
+            """ Transport button mapping events go here. """
+
 
         event.handled = True
 

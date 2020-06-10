@@ -23,6 +23,7 @@ class DeviceInstance(MPDHandler):
         print(f"Initialized MPD226 on port {self.port}.")
 
     def OnMidiMsg(self, event):
+        event.handled = False
         self.delegate_event(event)
 
     def OnDeInit(self):
@@ -68,6 +69,7 @@ class DeviceInstance(MPDHandler):
                 self.last_pad_press_time = time_pressed
                 pad.on = not pad.on
                 pad.held = True
+                self.check_for_remap(pad, event)
                 self.handle_pad_press(event, pad)
         event.handled = True
 
