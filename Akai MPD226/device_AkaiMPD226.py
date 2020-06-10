@@ -94,6 +94,13 @@ class DeviceInstance(MPDHandler):
             self.handle_knob_change(event, knob, event.controlVal)
         elif any([slider.id == id for slider in [self.slider_1, self.slider_2, self.slider_3, self.slider_4]]):
             slider = self.get_slider(id)
+            slider.value = event.controlVal
+            if slider.value == self.MODE_CHANGE_UNLOCK_VALUE: self.check_for_mode_change_unlock(slider)
+            else:
+                if self.mode_change_unlocked:
+                    self.set_hint_message("Button remapping mode locked")
+                    print("Button remapping mode LOCKED.")
+                self.mode_change_unlocked = False
             self.handle_slider_change(event, slider, event.controlVal)
         elif any([switch.id == id for switch in [self.switch_1, self.switch_2, self.switch_3, self.switch_4]]):
             switch = self.get_switch(id)

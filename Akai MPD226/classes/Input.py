@@ -3,4 +3,3 @@ class Input:
         self.number = number
         self.type = type
         self.id = id
-        self.value = 0

@@ -32,7 +32,7 @@ class MPDHandler(MPD226):
     last_pad_press_time = None
     last_stop_press_time = None
     button_map = 0
-    mode_change_unlocked = True
+    mode_change_unlocked = False
 
     """
     Initialization
@@ -69,12 +69,11 @@ class MPDHandler(MPD226):
         else:
             print(f"{button.type.upper()} {button.number} has no associated buffer.")
 
-    def change_button_mapping(self, map=1):
-        """ Update the global button mapping mode id. """
-        if isinstance(map, str):
-            if map in self.INPUT_MODES: map = self.INPUT_MODES.index(map)
-        self.button_map = (self.button_map + map) % len(self.INPUT_MODES)
-        self.set_hint_message(f"{self.INPUT_MODES[self.button_map]} mode".upper())
+    def check_for_mode_change_unlock(self, slider):
+        if all(lock.value == slider.value for lock in [self.slider_1, self.slider_2, self.slider_3, self.slider_4]):
+            self.mode_change_unlocked = True
+            self.set_hint_message("Button remapping mode")
+            print("Button remapping mode UNLOCKED.")
 
     def check_for_remap(self, pad, event):
         """ Change the button mapping if certain conditions are met. """
@@ -87,6 +86,15 @@ class MPDHandler(MPD226):
                     self.change_button_mapping(1)
                     event.handled = True
 
+    def change_button_mapping(self, map=1):
+        """ Update the global button mapping mode id. """
+        if isinstance(map, str):
+            if map in self.INPUT_MODES: map = self.INPUT_MODES.index(map)
+        self.button_map = (self.button_map + map) % len(self.INPUT_MODES)
+        self.set_hint_message(f"{self.INPUT_MODES[self.button_map]} mode".upper())
+
+        print(f"Remapped to {self.INPUT_MODES[self.button_map].upper()} mode.")
+
     """
     Input handlers
     """
@@ -95,7 +103,7 @@ class MPDHandler(MPD226):
         """
         Put pad press code here.
         """
-        print(f"Pressed pad {pad.number}.")
+        # print(f"Pressed pad {pad.number}.")
 
         if self.button_map == 0:  # DEFAULT MODE
             """ Default button mapping events go here. """
@@ -129,7 +137,7 @@ class MPDHandler(MPD226):
         """
         Put knob change code here.
         """
-        print(f"Changed knob {knob.number} to {value}.")
+        # print(f"Changed knob {knob.number} to {value}.")
 
         event.handled = True
 
@@ -137,7 +145,7 @@ class MPDHandler(MPD226):
         """
         Put slider change code here.
         """
-        print(f"Changed slider {slider.number} to {value}.")
+        # print(f"Changed slider {slider.number} to {value}.")
 
         event.handled = True
 

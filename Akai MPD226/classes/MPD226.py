@@ -38,6 +38,7 @@ class MPD226:
     STOP_BUFFER = 2
 
     INPUT_MODES = ['default', 'ui', 'transport']
+    MODE_CHANGE_UNLOCK_VALUE = 127
 
     def __init__(self):
         self.events = {
