@@ -148,3 +148,8 @@ def OnIdle():
 
 def OnRefresh(flags):
     pass
+
+def OnUpdateBeatIndicator(value):
+    # mpd_device.OnUpdateBeatIndicator(value)
+    # value == 0 for off, 1 for bar, 2 for beat
+    pass
