@@ -67,12 +67,14 @@ class DeviceInstance(MPDHandler):
             if self.check_buffer(pad, time_pressed):
                 self.last_pad_press_time = time_pressed
                 pad.on = not pad.on
+                pad.held = True
                 self.handle_pad_press(event, pad)
         event.handled = True
 
     def delegate_note_off(self, event):
         pad = self.get_pad(event.controlNum)
         if pad:
+            pad.held = False
             self.handle_pad_release(event, pad)
         event.handled = True
 
