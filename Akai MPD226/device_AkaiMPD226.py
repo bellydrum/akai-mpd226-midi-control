@@ -41,6 +41,9 @@ class DeviceInstance(MPDHandler):
     def OnRefresh(self, flags):
         pass
 
+    def OnUpdateBeatIndicator(self, value):
+        self.handle_beat(value)
+
     def delegate_event(self, event):
         status = event.status
         try:
@@ -150,6 +153,4 @@ def OnRefresh(flags):
     pass
 
 def OnUpdateBeatIndicator(value):
-    # mpd_device.OnUpdateBeatIndicator(value)
-    # value == 0 for off, 1 for bar, 2 for beat
-    pass
+    mpd_device.OnUpdateBeatIndicator(value)
