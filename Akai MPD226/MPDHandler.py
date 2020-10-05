@@ -67,7 +67,7 @@ class MPDHandler(MPD226):
         elif button.type == 'pad' and self.last_pad_press_time:
             return time_pressed - self.last_pad_press_time > self.PAD_BUFFER
         else:
-            print(f"{button.type.upper()} {button.number} has no associated buffer.")
+            print("{button.type.upper()} {button.number} has no associated buffer.")
 
     def check_for_mode_change_unlock(self, slider):
         if all(lock.value == slider.value for lock in [self.slider_1, self.slider_2, self.slider_3, self.slider_4]):
@@ -91,9 +91,9 @@ class MPDHandler(MPD226):
         if isinstance(map, str):
             if map in self.INPUT_MODES: map = self.INPUT_MODES.index(map)
         self.button_map = (self.button_map + map) % len(self.INPUT_MODES)
-        self.set_hint_message(f"{self.INPUT_MODES[self.button_map]} mode".upper())
+        self.set_hint_message ("{self.INPUT_MODES[self.button_map]} mode.".upper())
 
-        print(f"Remapped to {self.INPUT_MODES[self.button_map].upper()} mode.")
+        print("Remapped to " + self.INPUT_MODES[self.button_map].upper() + " mode.")
 
     """
     Input handlers
@@ -147,7 +147,7 @@ class MPDHandler(MPD226):
     def handle_switch_press(self, event, switch):
         """ Put switch press code here.
         """
-        print(f"Pressed switch {switch.number}.")
+        print(f"Pressed switch (switch.number).")
 
         event.handled = True
 
