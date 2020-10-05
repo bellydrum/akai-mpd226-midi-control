@@ -147,7 +147,7 @@ class MPDHandler(MPD226):
     def handle_switch_press(self, event, switch):
         """ Put switch press code here.
         """
-        print(f"Pressed switch (switch.number).")
+        print("Pressed switch {}.".format(switch.number))
 
         event.handled = True
 
