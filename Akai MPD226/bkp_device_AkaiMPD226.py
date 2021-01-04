@@ -115,7 +115,7 @@ class MPD226:
 
     def setHintMessage(self, message):
         if isinstance(message, str): ui.setHintMsg(message)
-        else: print(f"self.setHintMessage error:\n  Param 'message' must be of type str.")
+        else: print("self.setHintMessage error:\n  Param 'message' must be of type str.")
 
     """ Get and set input mode information """
     def getInputMode(self):
@@ -132,9 +132,9 @@ class MPD226:
                     elif target == self.getPadByNumber(1):
                         self.INPUT_MODE = INPUT_MODES[(INPUT_MODES.index(self.getInputMode()) - 1) % len(INPUT_MODES)]
                     self.setHintMessage(f"{self.INPUT_MODE} mode".upper())
-                print(f"\nInput mode changed to {self.INPUT_MODE}.\n")
-            else: print(f"self.setInputMode error:\n  Param 'mode' {mode} must be of type str.")
-        else: print(f"self.setInputMode error:\n  Param 'tartet' {target} must be of type Input.")
+                print("\nInput mode changed to " + self.INPUT_MODE + ".\n")
+            else: print("self.setInputMode error:\n  Param 'mode' " + mode + " must be of type str.")
+        else: print("self.setInputMode error:\n  Param 'target' " + target + " must be of type Input.")
 
     def cycleWindowFocus(self, value):
         self.CURRENT_FOCUSED_WINDOW = (self.CURRENT_FOCUSED_WINDOW + value) % (NUMBER_OF_WINDOW_TYPES + 1)
@@ -144,61 +144,61 @@ class MPD226:
     def getPadById(self, id):
         if isinstance(id, int):
             return self.PADS_BY_ID[id] if id in PAD_IDS else None
-        else: print(f"self.getPadById error:\n  Param 'id' {id} must be of type int.")
+        else: print("self.getPadById error:\n  Param 'id' " + str(id) + " must be of type int.")
 
     def getPadByNumber(self, number):
         if isinstance(number, int):
             return self.PADS_BY_NUMBER[number - 1] if number in range(1, len(PAD_IDS) + 1) \
-                else print(f"self.getPadByNumber error:\n  Param 'number' {number} must be in range.")
-        else: print(f"self.getPadByNumber error:\n  Param 'number' {number} must be of type int.")
+                else print("self.getPadByNumber error:\n  Param 'number' " + str(number) + " must be in range.")
+        else: print("self.getPadByNumber error:\n  Param 'number' " + str(number) + " must be of type int.")
 
     """ Get knob Input objects """
     def getKnobById(self, id):
         if isinstance(id, int):
             return self.KNOBS_BY_ID[id] if id in KNOB_IDS else None
-        else: print(f"self.getKnobById error:\n  Param 'id' {id} must be of type int.")
+        else: print("self.getKnobById error:\n  Param 'id' " + str(id) + " must be of type int.")
 
     def getKnobByNumber(self, number):
         if isinstance(number, int):
             return self.KNOBS_BY_NUMBER[number - 1] if number in range(1, len(KNOB_IDS) + 1) \
-                else print(f"self.getKnobByNumber error:\n  Param 'number' {number} must be in range.")
-        else: print(f"self.getKnobByNumber error:\n  Param 'number' {number} must be of type int.")
+                else print("self.getKnobByNumber error:\n  Param 'number' " + str(number) + " must be in range.")
+        else: print("self.getKnobByNumber error:\n  Param 'number' " + str(number) + " must be of type int.")
 
     """ Get slider Input objects """
     def getSliderById(self, id):
         if isinstance(id, int):
             return self.SLIDERS_BY_ID[id] if id in SLIDER_IDS else None
-        else: print(f"self.getSliderById error:\n  Param 'id' {id} must be of type int.")
+        else: print("self.getSliderById error:\n  Param 'id' " + str(id) + " must be of type int.")
 
     def getSliderByNumber(self, number):
         if isinstance(number, int):
             return self.SLIDERS_BY_NUMBER[number - 1] if number in range(1, len(SLIDER_IDS) + 1) \
-                else print(f"self.getSliderByNumber error:\n  Param 'number' {number} must be in range.")
-        else: print(f"self.getSliderByNumber error:\n  Param 'number' {number} must be of type int.")
+                else print("self.getSliderByNumber error:\n  Param 'number' " + str(number) + " must be in range.")
+        else: print("self.getSliderByNumber error:\n  Param 'number' " + str(number) + " must be of type int.")
 
     """ Get time division Input objects """
     def getTimeDivButtonById(self, id):
         if isinstance(id, int):
             return self.TIME_DIV_BUTTONS_BY_ID[id] if id in TIME_DIV_BUTTON_IDS else None
-        else: print(f"self.getTimeDivButtonById error:\n  Param 'id' {id} must be of type int.")
+        else: print("self.getTimeDivButtonById error:\n  Param 'id' " + str(id) + " must be of type int.")
 
     def getTimeDivButtonByNumber(self, number):
         if isinstance(number, int):
             return self.TIME_DIV_BUTTONS_BY_NUMBER[number - 1] if number in range(1, len(TIME_DIV_BUTTON_IDS) + 1) \
-                else print(f"self.getTimeDivButtonByNumber error:\n  Param 'number' {number} must be in range.")
-        else: print(f"self.getTimeDivButtonByNumber error:\n  Param 'number' {number} must be of type int.")
+                else print("self.getTimeDivButtonByNumber error:\n  Param 'number' " + str(number) + " must be in range.")
+        else: print("self.getTimeDivButtonByNumber error:\n  Param 'number' " + str(number) + " must be of type int.")
 
     """ Get transport button input objects """
     def getTransportButtonById(self, id):
         if isinstance(id, int):
             return self.TRANSPORT_BUTTONS_BY_ID[id] if id in TRANSPORT_BUTTON_IDS else None
-        else: print(f"self.getTransportButtonById error:\n  Param 'id' {id} must be of type int.")
+        else: print("self.getTransportButtonById error:\n  Param 'id' " + str(id) + " must be of type int.")
 
     def getTransportButtonByNumber(self, number):
         if isinstance(number, int):
             return self.TRANSPORT_BUTTONS_BY_NUMBER[number - 1] if number in range(1, len(TRANSPORT_BUTTON_IDS) + 1) \
-                else print(f"self.getTransportButtonByNumber error:\n  Param 'number' {number} must be in range.")
-        else: print(f"self.getTransportButtonByNumber error:\n  Param 'number' {number} must be of type int.")
+                else print("self.getTransportButtonByNumber error:\n  Param 'number' " + str(number) + " must be in range.")
+        else: print("self.getTransportButtonByNumber error:\n  Param 'number' " + str(number) + " must be of type int.")
 
     """ Get and set current target input """
     def getTarget(self):
@@ -206,28 +206,28 @@ class MPD226:
 
     def setTarget(self, target):
         self.TARGET, self.TARGET_TYPE = target, target.type if isinstance(target, Input) \
-            else print(f"self.setTarget error:\n  Target {target} must be of type Input.")
+            else print("self.setTarget error:\n  Target " + str(target) + " must be of type Input.")
 
     def getTargetType(self):
         return self.TARGET_TYPE
 
     def setTargetType(self, type=None):
         self.TARGET_TYPE = type if type in INPUT_TYPES \
-            else print(f"self.setTargetType error:\n  Param 'type' {type} must exist in TARGET_TYPES.")
+            else print("self.setTargetType error:\n  Param 'type' " + str(type) + " must exist in TARGET_TYPES.")
 
     def getTargetValue(self):
         return self.TARGET_VALUE / 100 if self.TARGET_VALUE < 100 else 1
 
     def setTargetValue(self, value=0):
         if isinstance(value, int): self.TARGET_VALUE = value if value < 101 else 100
-        else: print(f"self.setTargetValue error:\n  Param 'value' {value} must be of type int.")
+        else: print("self.setTargetValue error:\n  Param 'value' " + str(value) + " must be of type int.")
 
     def getTargetPressure(self):
         return self.TARGET_PRESSURE
 
     def setTargetPressure(self, pressure=0):
         if isinstance(pressure, int): self.TARGET_PRESSURE = pressure if pressure < 128 else 127
-        else: print(f"self.setTargetPressure error:\n  Param 'pressure' {pressure} must be of type int.")
+        else: print("self.setTargetPressure error:\n  Param 'pressure' " + str(pressure) + " must be of type int.")
 
     def getLastPadPressed(self):
         return self.LAST_PAD_PRESSED
@@ -237,9 +237,9 @@ class MPD226:
             if pad_target.type == INPUT_TYPES[0]:
                 self.LAST_PAD_PRESSED = pad_target
             else:
-                print(f"self.setLastPadPressed error:\n  Param 'pad_target' type {pad_target.type} must be 'pad'.")
+                print("self.setLastPadPressed error:\n  Param 'pad_target' type " + str(pad_target.type) + " must be 'pad'.")
         else:
-            print(f"self.setLastPadPressed error:\n  Param 'pad_target' {pad_target} must be of type Input.")
+            print("self.setLastPadPressed error:\n  Param 'pad_target' " + str(pad_target) + " must be of type Input.")
 
     """ Get type of current target input """
     def targetIsPad(self):

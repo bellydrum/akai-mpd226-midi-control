@@ -59,7 +59,7 @@ class DeviceInstance(MPDHandler):
                 print("IMPORTANT: Change pad channel aftertouch settings to poly.")
                 event.handled = True
             else:
-                print("Event status {status} not found in self.events.")
+                print("Event status " + status + " not found in self.events.")
                 event.handled = True
         except KeyError:
             print("self.delegate_event error:\n  Event status {status} does not exist.")

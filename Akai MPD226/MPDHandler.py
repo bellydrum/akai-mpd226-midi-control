@@ -59,7 +59,7 @@ class MPDHandler(MPD226):
 
     def set_hint_message(self, message):
         if isinstance(message, str): ui.setHintMsg(message)
-        else: print(f"self.setHintMessage error:\n  Param 'message' must be of type str.")
+        else: print("self.setHintMessage error:\n  Param 'message' must be of type str.")
 
     def check_buffer(self, button, time_pressed):
         if button.type == 'transport' and self.last_stop_press_time:
@@ -67,7 +67,7 @@ class MPDHandler(MPD226):
         elif button.type == 'pad' and self.last_pad_press_time:
             return time_pressed - self.last_pad_press_time > self.PAD_BUFFER
         else:
-            print(f"{button.type.upper()} {button.number} has no associated buffer.")
+            print({button.type.upper()+ " " + str(button.number) + " has no associated buffer.")
 
     def check_for_mode_change_unlock(self, slider):
         if all(lock.value == slider.value for lock in [self.slider_1, self.slider_2, self.slider_3, self.slider_4]):
@@ -91,9 +91,9 @@ class MPDHandler(MPD226):
         if isinstance(map, str):
             if map in self.INPUT_MODES: map = self.INPUT_MODES.index(map)
         self.button_map = (self.button_map + map) % len(self.INPUT_MODES)
-        self.set_hint_message(f"{self.INPUT_MODES[self.button_map]} mode".upper())
+        self.set_hint_message(self.INPUT_MODES[self.button_map] + " mode".upper())
 
-        print(f"Remapped to {self.INPUT_MODES[self.button_map].upper()} mode.")
+        print("Remapped to " + self.INPUT_MODES[self.button_map].upper() + " mode.")
 
     """
     Input handlers
@@ -147,28 +147,28 @@ class MPDHandler(MPD226):
     def handle_switch_press(self, event, switch):
         """ Put switch press code here.
         """
-        print(f"Pressed switch {switch.number}.")
+        print("Pressed switch " + str(switch.number) + ".")
 
         event.handled = True
 
     def handle_stop_press(self, event, stop):
         """ Put stop press code here.
         """
-        print(f"Pressed stop button.")
+        print("Pressed stop button.")
 
         event.handled = True
 
     def handle_play_press(self, event, play):
         """ Put play press code here.
         """
-        print(f"Pressed play button.")
+        print("Pressed play button.")
 
         event.handled = True
 
     def handle_rec_press(self, event, rec):
         """ Put rec press code here.
         """
-        print(f"Pressed rec button.")
+        print("Pressed rec button.")
 
         event.handled = True
 
