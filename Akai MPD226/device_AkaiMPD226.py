@@ -112,7 +112,7 @@ class DeviceInstance(MPDHandler):
         elif any([transport.id == id for transport in [self.stop, self.play, self.rec]]):
             self.delegate_transport_press(event, self.get_transport(id))
         else:
-            print("Input not found for event.controlNum {id}.")
+            print("Input not found for event.controlNum " + str(id) + ".")
             event.handled = True
 
     def delegate_transport_press(self, event, transport):
