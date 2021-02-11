@@ -138,7 +138,8 @@ class MPDHandler(MPD226):
     def handle_pad_pressure_change(self, event, pad, value):
         """ Put pad pressure change code here.
         """
-        print("Changed pad " + str(pad.number) + " pressure to " + str(value) + ".")
+        print("Changed pad " + str(pad.number) +
+              " pressure to " + str(value) + ".")
 
         event.handled = True
 
@@ -152,7 +153,8 @@ class MPDHandler(MPD226):
     def handle_slider_change(self, event, slider, value):
         """ Put slider change code here.
         """
-        print("Changed slider " + str(slider.number) + " to " + str(value) + ".")
+        print("Changed slider " + str(slider.number) +
+              " to " + str(value) + ".")
 
         event.handled = True
 
