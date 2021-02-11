@@ -4,7 +4,12 @@ Allows the Akai MPD226 to communicate with FL Studio via a Python API.
 <img src="https://www.stars-music.com/medias/akai/mpd226-hd-89540.png" alt="MPD226" width="450"/>
 
 1) This project belong in `Image-Line/FL Studio/Settings/Hardware/`
+  - put simply, it should look something like `Image-Line/FL Studio/Settings/Hardware/Akai MPD226/...`
 2) In the FL Studio MIDI settings, select `Akai MPD226 (user)` from the controller type dropdown.
+
+### Adding your own functionality
+I've configured this project so the only file you need to edit is `Akai MPD226/MPDHandler.py`.
+To go straight to the fun stuff, start playing with the Input handler functions in that file.
 
 ### MPD226 button event information
 Information on how FL Studio reads the MPD226 buttons.
