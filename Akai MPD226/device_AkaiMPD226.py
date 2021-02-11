@@ -20,7 +20,7 @@ class DeviceInstance(MPDHandler):
         self.set_init_time()
         self.last_pad_press_time = self.init_time
         self.last_transport_press_time = self.init_time
-        print("Initialized MPD226 on port", self.port, ".")
+        print("Initialized MPD226 on port " + str(self.port) + ".")
 
     def OnMidiMsg(self, event):
         event.handled = False
