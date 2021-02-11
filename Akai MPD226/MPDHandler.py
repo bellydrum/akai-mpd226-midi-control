@@ -67,7 +67,7 @@ class MPDHandler(MPD226):
         elif button.type == 'pad' and self.last_pad_press_time:
             return time_pressed - self.last_pad_press_time > self.PAD_BUFFER
         else:
-            print({button.type.upper()+ " " + str(button.number) + " has no associated buffer.")
+            print(button.type.upper() + " " + str(button.number) + " has no associated buffer.")
 
     def check_for_mode_change_unlock(self, slider):
         if all(lock.value == slider.value for lock in [self.slider_1, self.slider_2, self.slider_3, self.slider_4]):
