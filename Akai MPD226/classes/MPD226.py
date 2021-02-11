@@ -111,7 +111,7 @@ class MPD226:
         try:
             return self.sliders_by_id[slider_id]
         except KeyError:
-            print("self.get_slider error:\n  No slider with id " + str(slider_id) + "."")
+            print("self.get_slider error:\n  No slider with id " + str(slider_id) + ".")
 
     def get_switch(self, switch_id):
         try:
