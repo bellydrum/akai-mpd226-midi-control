@@ -115,7 +115,7 @@ class MPDHandler(MPD226):
     def handle_pad_press(self, event, pad):
         """ Put pad press code here.
         """
-        # print(f"Pressed pad {pad.number}.")
+        print("Pressed pad " + str(pad.number) + ".")
 
         if self.button_map == 0:  # DEFAULT MODE
             """ Default button mapping events go here. """
@@ -131,28 +131,28 @@ class MPDHandler(MPD226):
     def handle_pad_release(self, event, pad):
         """ Put pad release code here.
         """
-        # print(f"Released pad {pad.number}.")
+        print("Released pad " + str(pad.number) + ".")
 
         event.handled = True
 
     def handle_pad_pressure_change(self, event, pad, value):
         """ Put pad pressure change code here.
         """
-        # print(f"Changed pad {pad.number} pressure to {value}.")
+        print("Changed pad " + str(pad.number) + " pressure to " + str(value) + ".")
 
         event.handled = True
 
     def handle_knob_change(self, event, knob, value):
         """ Put knob change code here.
         """
-        # print(f"Changed knob {knob.number} to {value}.")
+        print("Changed knob " + str(knob.number) + " to " + str(value) + ".")
 
         event.handled = True
 
     def handle_slider_change(self, event, slider, value):
         """ Put slider change code here.
         """
-        # print(f"Changed slider {slider.number} to {value}.")
+        print("Changed slider " + str(slider.number) + " to " + str(value) + ".")
 
         event.handled = True
 
@@ -190,5 +190,4 @@ class MPDHandler(MPD226):
     def handle_beat(self, value):
         """ Respond to beat indicators. Value is 1 at bar, 2 at beat, 0 at off.
         """
-        # print(value)
         pass
