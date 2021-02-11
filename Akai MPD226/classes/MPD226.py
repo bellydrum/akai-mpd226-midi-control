@@ -99,28 +99,28 @@ class MPD226:
         try:
             return self.pads_by_id[pad_id]
         except KeyError:
-            print(f'self.get_pad error:\n  No pad with id {pad_id}.')
+            print("self.get_pad error:\n  No pad with id " + str(pad_id) + ".")
 
     def get_knob(self, knob_id):
         try:
             return self.knobs_by_id[knob_id]
         except KeyError:
-            print(f'self.get_knob error:\n  No knob with id {knob_id}.')
+            print("self.get_knob error:\n  No knob with id " + str(knob_id) + ".")
 
     def get_slider(self, slider_id):
         try:
             return self.sliders_by_id[slider_id]
         except KeyError:
-            print(f'self.get_slider error:\n  No slider with id {slider_id}.')
+            print("self.get_slider error:\n  No slider with id " + str(slider_id) + "."")
 
     def get_switch(self, switch_id):
         try:
             return self.switches_by_id[switch_id]
         except:
-            print(f'self.get_switch error:\n  No switch with id {switch_id}.')
+            print("self.get_switch error:\n  No switch with id " + str(switch_id) + ".")
 
     def get_transport(self, transport_id):
         try:
             return self.transports_by_id[transport_id]
         except:
-            print(f'self.get_transport error:\n  No transport with id {transport_id}.')
+            print("self.get_transport error:\n  No transport with id " + str(transport_id) + ".")
