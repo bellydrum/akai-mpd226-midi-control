@@ -49,24 +49,23 @@ class DeviceInstance(MPDHandler):
     def delegate_event(self, event):
         status = event.status
         try:
-            if self.events[status] == "Note On":
+            if self.events.get(status) == "Note On":
                 self.delegate_note_on(event)
-            elif self.events[status] == "Note Off":
+            elif self.events.get(status) == "Note Off":
                 self.delegate_note_off(event)
-            elif self.events[status] == "Control Change":
+            elif self.events.get(status) == "Control Change":
                 self.delegate_control_change(event)
-            elif self.events[status] == "Channel Aftertouch (Poly)":
+            elif self.events.get(status) == "Channel Aftertouch (Poly)":
                 self.delegate_channel_aftertouch(event)
-            elif self.events[status] == "Channel Aftertouch (Channel)":
+            elif self.events.get(status) == "Channel Aftertouch (Channel)":
                 print("IMPORTANT: Change pad channel "
                       "aftertouch settings to poly.")
                 event.handled = True
             else:
-                print("Event status " + status + " not found in self.events.")
+                print("Event status " + status + " not found in self.events")
                 event.handled = True
         except KeyError:
-            print("self.delegate_event error:\n  "
-                  "Event status {status} does not exist.")
+            print("An unknown error occurred in delegate_event for status" + status + ".")
 
     def delegate_note_on(self, event):
         pad = self.get_pad(event.controlNum)
